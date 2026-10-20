@@ -1,0 +1,31 @@
+<div class="container">
+  <form class="mb-4">
+    <div class="form-group mb-2 mt-2">
+      <label for="searchTerm">Rechercher un composant par nom</label>
+      <input #searchInput id="searchTerm" type="text" class="form-control"
+        [(ngModel)]="searchTerm" name="searchTerm" (keyup)="onKeyUp(searchInput.value)">
+    </div>
+  </form>
+
+  <div class="card shadow mb-4">
+    <div class="card-body">
+      <table class="table table-striped">
+        <thead>
+          <tr><th>Identifiant</th><th>Nom</th><th>Marque</th><th>Prix</th><th>Date d'achat</th><th>Type</th></tr>
+        </thead>
+        <tbody>
+          @for (composantPc of composantsPc | searchFilter: searchTerm; track composantPc.idComposantPc) {
+            <tr>
+              <td>{{composantPc.idComposantPc}}</td>
+              <td>{{composantPc.nomComposantPc}}</td>
+              <td>{{composantPc.marqueComposantPc}}</td>
+              <td>{{composantPc.prixComposantPc}}</td>
+              <td>{{composantPc.dateAchat | date:'dd/MM/yyyy'}}</td>
+              <td>{{composantPc.typeComposant?.nomType}}</td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="col-sm-4 col-md-4 col-lg-4 mb-4">
+    <label for="idType">Type de composant</label>
+    <select class="form-control form-control-lg" id="idType" name="idType"
+      [(ngModel)]="idType" (change)="onChange()">
+      @for (type of typesComposant; track type.idType) {
+        <option [ngValue]="type.idType">{{type.nomType}}</option>
+      }
+    </select>
+  </div>
+
+  <div class="card shadow mb-4">
+    <div class="card-body">
+      <table class="table table-striped">
+        <thead>
+          <tr><th>Identifiant</th><th>Nom</th><th>Marque</th><th>Prix</th><th>Date d'achat</th><th>Type</th></tr>
+        </thead>
+        <tbody>
+          @for (composantPc of composantsPc; track composantPc.idComposantPc) {
+            <tr>
+              <td>{{composantPc.idComposantPc}}</td>
+              <td>{{composantPc.nomComposantPc}}</td>
+              <td>{{composantPc.marqueComposantPc}}</td>
+              <td>{{composantPc.prixComposantPc}}</td>
+              <td>{{composantPc.dateAchat | date:'dd/MM/yyyy'}}</td>
+              <td>{{composantPc.typeComposant?.nomType}}</td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

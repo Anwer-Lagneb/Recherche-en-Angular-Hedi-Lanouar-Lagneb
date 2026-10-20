@@ -1,0 +1,36 @@
+<div class="container">
+  <h2>Modifier un composant PC</h2>
+  <form>
+    <div class="col-sm-2 col-md-2 col-lg-2">
+      <label>Identifiant</label>
+      <input readonly type="number" [(ngModel)]="currentComposantPc.idComposantPc" name="idComposantPc" class="form-control">
+    </div>
+    <div class="col-sm-4 col-md-4 col-lg-4">
+      <label>Nom du composant</label>
+      <input type="text" [(ngModel)]="currentComposantPc.nomComposantPc" name="nomComposantPc" class="form-control">
+    </div>
+    <div class="col-sm-4 col-md-4 col-lg-4">
+      <label>Marque</label>
+      <input type="text" [(ngModel)]="currentComposantPc.marqueComposantPc" name="marqueComposantPc" class="form-control">
+    </div>
+    <div class="col-sm-2 col-md-2 col-lg-2">
+      <label>Prix</label>
+      <input type="number" [(ngModel)]="currentComposantPc.prixComposantPc" name="prixComposantPc" class="form-control">
+    </div>
+    <div class="col-sm-4 col-md-4 col-lg-4">
+      <label>Date d'achat</label>
+      <input type="date" [ngModel]="currentComposantPc.dateAchat | date: 'yyyy-MM-dd'" (ngModelChange)="currentComposantPc.dateAchat= $event" name="dateAchat" class="form-control">
+    </div>
+    <div class="col-sm-4 col-md-4 col-lg-4">
+      <label for="idType">Type de composant</label>
+      <select class="form-control" id="idType" name="idType" [(ngModel)]="updatedTypeId">
+        @for (type of typesComposant; track type.idType) {
+          <option [ngValue]="type.idType">{{type.nomType}}</option>
+        }
+      </select>
+    </div>
+    <div class="mt-2">
+      <button type="submit" (click)="updateComposantPc()" class="btn btn-success">Modifier</button>
+    </div>
+  </form>
+</div>

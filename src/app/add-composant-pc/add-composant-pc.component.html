@@ -1,0 +1,37 @@
+<div class="container">
+  <h2>Ajouter un composant PC</h2>
+  <form>
+    <div class="col-sm-2 col-md-2 col-lg-2">
+      <label>Identifiant</label>
+      <input type="number" [(ngModel)]="newComposantPc.idComposantPc" name="idComposantPc" class="form-control">
+    </div>
+    <div class="col-sm-4 col-md-4 col-lg-4">
+      <label>Nom du composant</label>
+      <input type="text" [(ngModel)]="newComposantPc.nomComposantPc" name="nomComposantPc" class="form-control">
+    </div>
+    <div class="col-sm-4 col-md-4 col-lg-4">
+      <label>Marque</label>
+      <input type="text" [(ngModel)]="newComposantPc.marqueComposantPc" name="marqueComposantPc" class="form-control">
+    </div>
+    <div class="col-sm-2 col-md-2 col-lg-2">
+      <label>Prix</label>
+      <input type="number" [(ngModel)]="newComposantPc.prixComposantPc" name="prixComposantPc" class="form-control">
+    </div>
+    <div class="col-sm-4 col-md-4 col-lg-4">
+      <label>Date d'achat</label>
+      <input type="date" [(ngModel)]="newComposantPc.dateAchat" name="dateAchat" class="form-control">
+    </div>
+    <div class="col-sm-4 col-md-4 col-lg-4">
+      <label for="idType">Type de composant</label>
+      <select class="form-control" id="idType" name="idType" [(ngModel)]="newIdType">
+        @for (type of typesComposant; track type.idType) {
+          <option [ngValue]="type.idType">{{type.nomType}}</option>
+        }
+      </select>
+    </div>
+    <div class="mt-2">
+      <button type="submit" (click)="addComposantPc()" class="btn btn-success">Ajouter</button>
+    </div>
+    <div class="mt-2"><h3>{{message}}</h3></div>
+  </form>
+</div>
